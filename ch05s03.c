@@ -10,7 +10,7 @@ int GCD(int a, int b)
     if (a % b == 0) {
         return b;
     }
-    GCD(b, a % b);
+    return GCD(b, a % b);
 }
 
 int fib(int n)

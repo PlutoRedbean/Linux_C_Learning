@@ -164,7 +164,7 @@ void print_rational(struct rational num)
 
 int main()
 {
-    /*double x, y;
+    double x, y;
     printf("Input real part: ");
     scanf("%lf", &x);
     printf("Input img part: ");
@@ -183,13 +183,13 @@ int main()
     print_complex(mul_complex(z2, z1));
 	printf("\n");
     print_complex(div_complex(z2, z1));
-	printf("\n");*/
-	struct rational a = make_rational(1, 8); /* a=1/8 */
-	struct rational b = make_rational(-1, 8); /* b=-1/8 */
-	print_rational(add_rational(a, b));
-	print_rational(sub_rational(a, b));
-	print_rational(mul_rational(a, b));
-	print_rational(div_rational(a, b));
+	printf("\n");
+	// struct rational a = make_rational(1, 8); /* a=1/8 */
+	// struct rational b = make_rational(-1, 8); /* b=-1/8 */
+	// print_rational(add_rational(a, b));
+	// print_rational(sub_rational(a, b));
+	// print_rational(mul_rational(a, b));
+	// print_rational(div_rational(a, b));
 
     return 0;
 }
