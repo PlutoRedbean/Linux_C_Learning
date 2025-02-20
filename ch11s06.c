@@ -87,7 +87,7 @@ double mypow_iteration(double x, int n)
         if (n % 2 == 1) {
             result *= x;
         }
-        n = n << 2;  /*每次移位，底数都要翻倍*/
+        n = n >> 1;  /*每次移位，底数都要翻倍*/
         x *= x;
     }
     return result;

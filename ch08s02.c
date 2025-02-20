@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
-#define N 3
+#define N 4
 
-int a[N] = {1, 2, 3};
+int a[N] = {1, 2, 3, 4};
 
 void gen_random(int upper_bound)
 {
