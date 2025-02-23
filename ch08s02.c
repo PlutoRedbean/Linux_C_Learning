@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #define N 4
+#define M 4
 
-int a[N] = {1, 2, 3, 4};
+int a[N] = {1, 2, 3, 4, 5};
+int result[M];
 
 void gen_random(int upper_bound)
 {
@@ -45,19 +48,21 @@ void array_assignment(int* a, int* b)
 	}
 }
 
-void print_array(int* a)
+void print_array(int* a, int num)
 {
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < num; i++) {
 		printf("%d ", a[i]);
 	}
 	printf("\n");
 }
 
+/*------------------------------------------------*/
+
 void print_full_permutation(int depth)
 {
 	if ( depth == N - 1 ) {
 		// Base Case
-		print_array(a);
+		print_array(a, N);
 		return;
 	} else {
 		// Recursion
@@ -69,9 +74,71 @@ void print_full_permutation(int depth)
 	}
 }
 
+/*------------------------------------------------*/
+
+// 挑1，再挑n-1个，挑到depth = M - 1时为Base Case
+void combination(int start, int order)
+{
+	if (start == M - 1) {
+		// Base Case
+		for (int i = order; i < N; i++) {
+			result[start] = a[i];
+			print_array(result, M);
+		}
+		return;
+	} else {
+		// Recursion
+		for (int i = order; i < N; i++) {
+			result[start] = a[i];
+			combination(start + 1, i + 1);
+		}
+	}
+}
+
+/*------------------------------------------------*/
+
+// 先挑出M个，再对这M个全排列
+void full_permutation(int depth)
+{
+	if ( depth == M - 1 ) {
+		// Base Case
+		print_array(result, M);
+		return;
+	} else {
+		// Recursion
+		for (int i = depth; i < M; i++) {
+			swap(&result[depth], &result[i]);
+			full_permutation(depth + 1);
+			swap(&result[depth], &result[i]);
+		}
+	}
+}
+
+void permutation(int start, int order)
+{
+	if (start == M - 1) {
+		// Base Case
+		for (int i = order; i < N; i++) {
+			result[start] = a[i];
+			full_permutation(0);
+		}
+		return;
+	} else {
+		// Recursion
+		for (int i = order; i < N; i++) {
+			result[start] = a[i];
+			permutation(start + 1, i + 1);
+		}
+	}
+}
+
+/*------------------------------------------------*/
+
 int main(void)
 {
-	print_full_permutation(0);
+	// print_full_permutation(0);
+	// combination(0, 0);
+	permutation(0, 0);
 
 	/*int i, histogram[10] = {0};
 
