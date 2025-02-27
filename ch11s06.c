@@ -84,10 +84,10 @@ double mypow_iteration(double x, int n)
 {
     int result = 1;
     while (n > 0) {
-        if (n % 2 == 1) {
+        if (n & 1u) {
             result *= x;
         }
-        n = n >> 1;  /*每次移位，底数都要翻倍*/
+        n >>= 1;
         x *= x;
     }
     return result;
@@ -98,8 +98,8 @@ int main(void)
 	int num = 10;
 	// printf("%d\n", binarysearch(0, LEN - 1, num));
     // printf("%lf\n", mysqrt(458.0));
-    printf("%lf\n", mypow_iteration(2, 10));
-    printf("%lf\n", mypow_recursion(2, 10));
+    printf("%lf\n", mypow_iteration(2, 15));
+    // printf("%lf\n", mypow_recursion(2, 10));
     printf("%d\n", count);
 
 	return 0;
